@@ -1,0 +1,32 @@
+{
+  "ajustes": {
+    "volumen": 6,
+    "tema": "CIELO",
+    "particulas": true,
+    "sacudida": true,
+    "estela": true,
+    "tinte": false,
+    "raton": false,
+    "puntos": 3,
+    "vel_pelota": 4,
+    "vel_raquetas": 5,
+    "dificultad": 1,
+    "fps_visible": false,
+    "angulo": 48,
+    "angulo_listo": true,
+    "nombre": "AAA"
+  },
+  "records": {},
+  "stats": {
+    "partidas": 0,
+    "victorias": 0,
+    "derrotas": 0,
+    "golpes": 0,
+    "puntos": 0,
+    "segundos": 0,
+    "mejor_rally": 0,
+    "racha": 0,
+    "mejor_racha": 0,
+    "torneos": 0
+  }
+}
