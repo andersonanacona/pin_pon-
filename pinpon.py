@@ -41,15 +41,50 @@ fps = 60
 
 racket1 = Player('racket.png', 30, 200, 4, 50, 150)
 racket2 = Player('racket.png', 520, 200, 4, 50, 150)
-ball = GameSprite('ball.png', 200, 200, 4, 50, 50)
+pelota = GameSprite('pelota.png', 200, 200, 4, 50, 50)
+
+pelota_speedx = 3
+pelota_speedy = 3
+
+font.init()
+font1 = font.Font(None, 35)
+lose1 = font1.render('PLAYER 1 LOSES!', True, (180, 0, 0))
+lose2 = font1.render('PLAYER 2 LOSES!', True, (180, 0, 0))
 
 while game:
     
     for e in event.get():
         if e.type == QUIT:
             game = False
-    racket1.reset()
-    racket2.reset()
-    ball.reset()      
+    if finish != True:
+        window.fill((200, 255, 255))
+        
+        pelota.rect.x += pelota_speedx
+        pelota.rect.y += pelota_speedy
+        
+        if pelota.rect.y > 450:
+            pelota_speedy *= -1
+        if pelota.rect.y < 0:
+            pelota_speedy *= -1
+        
+        if sprite.collide_rect(racket1, pelota):
+            pelota_speedx *= -1
+        if sprite.collide_rect(racket2, pelota):
+            pelota_speedx *= -1
+        
+        if pelota.rect.x < 50:
+            finish = True
+            window.blit(lose1, (200, 200))
+            
+        if pelota.rect.x > 600:
+            finish = True
+            window.blit(lose2, (200, 200))
+        
+        racket1.update_l()
+        racket2.update_right()
+        racket1.reset()
+        racket2.reset()
+        pelota.reset()
+                  
     display.update()
     clock.tick(fps)
